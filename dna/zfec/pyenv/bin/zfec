@@ -1,0 +1,12 @@
+#!/home/bob/zfec/pyenv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'zfec==1.5.3+1.g08fe3ea.dirty','console_scripts','zfec'
+__requires__ = 'zfec==1.5.3+1.g08fe3ea.dirty'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('zfec==1.5.3+1.g08fe3ea.dirty', 'console_scripts', 'zfec')()
+    )
