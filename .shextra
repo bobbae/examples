@@ -1,0 +1,86 @@
+
+#if [ -f  $HOME/.local/share/lscolors.sh ]; then
+#    . $HOME/.local/share/lscolors.sh
+#fi
+
+qq() {
+    clear
+
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+
+    if [[ ! -f "$logpath" ]]; then
+        echo 'Q LOG' > "$logpath"
+    fi
+
+    tail -100f -- "$logpath"
+}
+
+rmqq() {
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+    if [[ -f "$logpath" ]]; then
+        rm "$logpath"
+    fi
+    qq
+}
+
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+
+
+export AIRFLOW_HOME=/home/bob/airflow
+export GOPATH=$HOME/go
+
+# don't use GOROOT anymore
+# you may get errors about $GOROOT or src/time not there, etc.
+#export GOROOT=$HOME/go
+#export BROWSER="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+
+
+# some more ls aliases
+#alias ll='ls -GalF'
+#alias la='ls -GA'
+#alias l='ls -aGCF'
+#alias ls=exa
+#alias la='ls -aCF'
+alias mktar='cd ~;tar zcvf x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  ' 
+
+
+#  export LDFLAGS="-L/usr/local/opt/libffi/lib"
+#  export CPPFLAGS="-I/usr/local/opt/libffi/include"
+
+#  export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
+#   LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+
+
+#  export LDFLAGS="-L/usr/local/opt/llvm/lib"
+#  export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+#export DENO_INSTALL="/home/bob/.deno"
+#source $HOME/.asdf/asdf.sh
+
+#export JAVA_HOME=$HOME/bin/java/jdk8u232-b09/Contents/Home
+
+export JAVA_HOME=$HOME/bin/java/jdk-11.0.4+11/Contents/Home
+
+export GRADLE_HOME=$HOME/bin/gradle/gradle-5.6.2
+
+#. ~/scripts/z.sh
+#source ~/venv-3.9.5/bin/activate
+
+export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/local/opt/llvm/bin:$PATH
+#export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$GRADLE_HOME/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/sbin:/usr/sbin:/usr/local/sbin:$PATH
+#export PATH=`$HOME/scripts/nodupepath.sh`
