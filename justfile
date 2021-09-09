@@ -1,11 +1,11 @@
 alias si := system-info
 
 system-info:
-    @echo from ~/justfile
-    @echo "This is an {{arch()}} machine running {{os()}}".
-    @echo PATH is {{env_var("PATH")}}
-    # the same as @echo PATH is $PATH
-    @echo current invocation directory is {{invocation_directory()}}
+	@echo from ~/justfile
+	@echo "This is an {{arch()}} machine running {{os()}}".
+	@echo PATH is {{env_var("PATH")}}
+	@echo PATH is $PATH
+	@echo current invocation directory is {{invocation_directory()}}
 
 ssh-host-keys:
 	sudo ssh-keygen -b 1024 -t rsa -f /etc/ssh/ssh_host_key
@@ -64,3 +64,21 @@ clean-requirements:
 
 refresh-just-completion-bash:
 	complete -W "$(just --summary)" just
+
+gpg-encrypt:
+	gpg -c filename
+
+gpg-decrypt:
+	gpg filename
+
+xtar:
+	tar -C $HOME -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  
+
+common-tools:
+	brew install htop fd ripgrep bat tree fzf exa procs
+
+rustup:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo-edit:
+	cargo install cargo-edit
