@@ -72,7 +72,7 @@ gpg-decrypt:
 	gpg filename
 
 xtar:
-	tar -C $HOME -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  
+	tar -C $HOME -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  *.txt
 
 common-tools:
 	brew install htop fd ripgrep bat tree fzf exa procs
