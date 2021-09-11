@@ -1,11 +1,11 @@
-alias si := system-info
+#alias si := system-info
 
-system-info:
-	@echo from ~/justfile
-	@echo "This is an {{arch()}} machine running {{os()}}".
-	@echo PATH is {{env_var("PATH")}}
-	@echo PATH is $PATH
-	@echo current invocation directory is {{invocation_directory()}}
+#system-info:
+#	@echo from ~/justfile
+#	@echo "This is an {{arch()}} machine running {{os()}}".
+#	@echo PATH is {{env_var("PATH")}}
+#	@echo PATH is $PATH
+#	@echo current invocation directory is {{invocation_directory()}}
 
 ssh-host-keys:
 	sudo ssh-keygen -b 1024 -t rsa -f /etc/ssh/ssh_host_key
@@ -54,7 +54,7 @@ create-venv:
 	python3 -m venv ~/venv-some-dir
 
 venv-jupyter:
-	source /home/bob/venv-jupyter/bin/activate
+	source ~/venv-jupyter/bin/activate
 
 create-requirements:
 	pip freeze > requirements.txt
@@ -62,8 +62,8 @@ create-requirements:
 clean-requirements:
 	pipreqs --force .
 
-refresh-just-completion-bash:
-	complete -W "$(just --summary)" just
+#refresh-just-completion-bash:
+#	complete -W "$(just --summary)" just
 
 gpg-encrypt:
 	gpg -c filename
@@ -72,7 +72,7 @@ gpg-decrypt:
 	gpg filename
 
 xtar:
-	tar -C $HOME -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
+	tar -C ~  -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
 
 common-tools:
 	brew install htop fd ripgrep bat tree fzf exa procs
