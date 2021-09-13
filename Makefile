@@ -51,10 +51,10 @@ heroku-database:
 	export DATABASE_URL=`heroku config:get DATABASE_URL -a aaa12w3 -j`
 
 create-venv:
-	python3 -m venv ~/venv-some-dir
+	python3 -m venv ~/venv-3.x.x
 
 venv-jupyter:
-	source ~/venv-jupyter/bin/activate
+	source ~/venv-3.x.x/bin/activate
 
 create-requirements:
 	pip freeze > requirements.txt
@@ -72,10 +72,15 @@ gpg-decrypt:
 	gpg filename
 
 xtar:
+	[ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.old
+	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
 	tar -C ~  -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
 
 common-tools:
-	brew install htop fd ripgrep bat tree fzf exa procs
+	brew install htop fd ripgrep bat tree rush exa procs
+	wget https://raw.githubusercontent.com/brushtechnology/fabricate/master/fabricate.py
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
 
 rustup:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
