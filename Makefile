@@ -74,13 +74,41 @@ gpg-decrypt:
 xtar:
 	[ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.old
 	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
-	tar -C ~  -zcvf  x.tar.gz .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
+	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
 
-common-tools:
-	brew install htop fd ripgrep bat tree rush exa procs
+xuntar:
+	cp examples/x.tar.gz.gpg
+	gpg x.tar.gz.gpg
+	cp -r .ssh .ssh.backup
+	tar xf x.tar.gz
+
+common-tools: common-base common-tools-build-essentials common-tools-1 common-tools-rust common-tools-golang common-tools-fzf common-tools-nodejs
+	#brew install htop fd ripgrep bat tree rush exa procs
 	wget https://raw.githubusercontent.com/brushtechnology/fabricate/master/fabricate.py
+
+common-base:
+	sudo apt update
+	sudo apt install -y vim tmux 
+
+common-tools-fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
+
+common-tools-nodejs:
+	sudo apt install -y nodejs npm
+
+common-tools-golang:
+	sudo rm -rf /usr/local/go && cd /usr/local && sudo wget https://golang.org/dl/go1.17.1.linux-amd64.tar.gz &&  sudo tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
+
+common-tools-1:
+	sudo apt install -y  htop   tree  curl wget
+
+common-tools-build-essentials:
+	sudo apt install -y build-essential
+
+common-tools-rust: rustup
+	cargo install ripgrep
+	cargo install cargo-edit
 
 rustup:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
