@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on m&amp;m</title>
+    <link>https://bobbae.gitlab.io/mm/posts/</link>
+    <description>Recent content in Posts on m&amp;m</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bobbae.gitlab.io/mm/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing mysql on Ubuntu 18.04 wsl2</title>
+      <link>https://bobbae.gitlab.io/mm/posts/mysql/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/mysql/</guid>
+      <description>After installing with the usual
+$ sudo apt install mysql-server$ sudo service mysql start$ sudo mysql_secure_installationI could not login by doing
+$ mysql -u rootERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;Looking at the authentication plugin shows:
+mysql&amp;gt; SELECT user,authentication_string,plugin,host FROM mysql.user;+------------------+-------------------------------------------+-----------------------+-----------+| user | authentication_string | plugin | host |+------------------+-------------------------------------------+-----------------------+-----------+| root | *2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19 | auth_socket | localhost || mysql.</description>
+    </item>
+    
+    <item>
+      <title>LA Covid-19 chart</title>
+      <link>https://bobbae.gitlab.io/mm/posts/lacovid/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/lacovid/</guid>
+      <description>LA Covid-19 chart.
+source code
+Jupyter notebook</description>
+    </item>
+    
+    <item>
+      <title>RIP John Prine</title>
+      <link>https://bobbae.gitlab.io/mm/posts/johnprine/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/johnprine/</guid>
+      <description>RIP John Prine, a nice tribute.</description>
+    </item>
+    
+    <item>
+      <title>DNA punch card!</title>
+      <link>https://bobbae.gitlab.io/mm/posts/dnapunch/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/dnapunch/</guid>
+      <description>DNA punch card.
+A novel approach.
+Always thought that other approaches like DNA fountain and Catalog DNA were not quite right. DNA Fountain code seemed to break down with different sets of data. Catalog DNA approach probably had difficulties scaling.
+I still believe the encoding and decoding need to employ some machine learning. A combination of DNA punch card and clustering auto-encoder may get us closer.</description>
+    </item>
+    
+    <item>
+      <title>bitcoin</title>
+      <link>https://bobbae.gitlab.io/mm/posts/bitcoin/</link>
+      <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/bitcoin/</guid>
+      <description>Bitcoin is difficult to grok. The best explanation may be this.
+The Canadian Crypto Exchange QuadrigaCX CEO who died with sole crypto keys making it impossible for customers to access bitcoins is a recent example of unregulated bitcoin interests. It&amp;rsquo;s also been reported that he got married and then filed a will 12 days before his death during his honeymoon trip in India. The wife is the sole beneficiary. Some people suspect he faked his death.</description>
+    </item>
+    
+    <item>
+      <title>coding school</title>
+      <link>https://bobbae.gitlab.io/mm/posts/codingschool/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bobbae.gitlab.io/mm/posts/codingschool/</guid>
+      <description>Malcolm Gladwell wrote
+about the 10,000 hour rule to achieve &amp;ldquo;greatness&amp;rdquo; in any given field requiring skills and expertise. Many dispute this and Anders Ericsson by citing quality vs. quantity of efforts and time. Tim Ferris and others claim that one can have world-class skills in 6 months or less by using creative feedback loop, deliberate practice, and other smarter ways of learning.
+Peter Norvig blogged against some books with titles like Teach Yourself Java in 24 hours.</description>
+    </item>
+    
+  </channel>
+</rss>
