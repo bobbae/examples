@@ -45,7 +45,7 @@ fn main() {
 
     let mut compound_words = vec![];
 
-    for (k,v) in trie.iter() {
+    for (k, v) in trie.iter() {
         let mut word = String::new();
         for ch in k.chars() {
             word.push(ch);
@@ -145,7 +145,7 @@ fn build_trie_from_file(filename: &str) -> Trie<String, i32> {
     if let Ok(lines) = read_lines(filename) {
         for line in lines {
             if let Ok(word) = line {
-                println!("{} inserted {}", ind, &word);
+                //println!("{} inserted {}", ind, &word);
                 trie.insert(word, ind);
                 ind += 1;
                 assert!(trie.check_integrity());
