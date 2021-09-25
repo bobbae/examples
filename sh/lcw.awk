@@ -9,13 +9,14 @@ function ex1() {
 	for (i = 0; i < num; i++) {
 		#print(i,words[i]);
 		if (is_compound(words[i], 0, 1, length(words[i])) == "1") {
-			print("compound", words[i]);
+			print(words[i]);
 		} else {
 			#print("not compound", words[i]);
 		}
 	}
 } 
 
+# recursion: place variables j, wlen, as parameters to protect.
 function is_compound(word, level, j, wlen) {
 	for ( ; j <= wlen; j++) {
 		frag = substr(word, 0, j);

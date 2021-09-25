@@ -3,8 +3,9 @@ extern crate radix_trie;
 use radix_trie::{Trie, TrieCommon, TrieKey};
 use clap::{Arg, App};
 use std::fs::File;
-use std::io::{self, BufRead};
+use std::io::{self, prelude::*, BufRead, BufReader};
 use std::path::Path;
+use std::collections::HashMap;
 
 const WORDLIST1: [&'static str; 11] = [
     "cat",
@@ -39,6 +40,52 @@ fn main() {
         panic!("File {} does not exist.", filename);
     }
     println!("using file {} as input", filename);
+    test_hashmap(filename);
+}
+
+fn test_hashmap(filename: &str) ->io::Result<()> {
+    let mut hm = HashMap::new();
+    let file = File::open(filename)?;
+    let reader = BufReader::new(file);
+
+    let mut ind = 1;
+    for line in reader.lines() {
+        hm.insert(line.unwrap(), ind);
+        ind += 1;
+    }
+    println!("{} words", hm.len());
+    let mut compound_words = vec![];
+    for (k, v) in  hm.iter() {
+        if compounded(&hm, k, 1) {
+            compound_words.push(k);
+        }
+    }
+    compound_words.sort_by(|a,b| b.len().cmp(&a.len()));
+    println!("Compound words are: {:?}", compound_words);
+
+    Ok(())
+}
+
+fn compounded(hm: &HashMap<String, i32>, word : &String, level: i32) -> bool {
+    for i in 1..word.len() {
+        let prefix : String = word.chars().take(i).collect();
+        if !hm.contains_key(&prefix) {
+            continue;
+        }
+        //println!("prefix {}", &prefix);
+        let rest : String = word.chars().skip(i).collect();
+        //println!("rest {}", &rest);
+        if compounded(hm, &rest, level + 1) {
+           return true;
+        }
+    }
+    if hm.contains_key(word) && level > 1 {
+        return true;
+    }
+    false
+}
+
+fn test_radix(filename: &str) {
     //let  trie = build_trie();
 
     let trie = build_trie_from_file(filename);
@@ -82,7 +129,7 @@ fn is_compound<'a>(trie: &Trie<String, i32> , word: &'a String, level: i32) -> b
     false
 }
 
-fn test1<'a>(trie: Trie<&'a str, i32>) {
+fn test_radix_fixed_input<'a>(trie: Trie<&'a str, i32>) {
     for (k,v) in trie.iter() {
         println!("{}: {}", k,v);
     }
