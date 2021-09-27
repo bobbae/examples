@@ -51,6 +51,7 @@ heroku-database:
 	export DATABASE_URL=`heroku config:get DATABASE_URL -a aaa12w3 -j`
 
 create-venv:
+	sudo apt install -y python3-venv
 	python3 -m venv ~/venv-3.x.x
 
 venv-jupyter:
@@ -82,13 +83,13 @@ xuntar:
 	cp -r .ssh .ssh.backup
 	tar xf x.tar.gz
 
-common-tools: common-base common-tools-build-essentials common-tools-1 common-tools-rust common-tools-golang common-tools-fzf common-tools-nodejs
+common-tools: common-base common-tools-build-essentials common-tools-1  common-tools-golang common-tools-fzf common-tools-nodejs common-tools-rust
 	#brew install htop fd ripgrep bat tree rush exa procs
 	wget https://raw.githubusercontent.com/brushtechnology/fabricate/master/fabricate.py
 
 common-base:
 	sudo apt update
-	sudo apt install -y vim tmux 
+	sudo apt install -y vim tmux openssl 
 
 common-tools-fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -108,7 +109,7 @@ common-tools-build-essentials:
 
 common-tools-rust: rustup
 	cargo install ripgrep
-	cargo install cargo-edit
+	#cargo install cargo-edit
 
 rustup:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
