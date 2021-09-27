@@ -1,2 +1,0 @@
-@HD	VN:1.4	SO:unsorted
-@PG	ID:01	PN:ART_Illumina	CL:./art_illumina -ss HS25 -i /tmp/zzz -o ./paired_end_com -l 150 -f 10 -p -m 150 -s 10 -sam -rs 1530815917
