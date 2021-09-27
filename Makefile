@@ -75,7 +75,7 @@ gpg-decrypt:
 xtar:
 	[ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.old
 	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
-	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig .config .bash_profile txt
+	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile 
 
 xuntar:
 	cp examples/x.tar.gz.gpg
