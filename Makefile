@@ -134,3 +134,37 @@ rustup:
 
 cargo-edit:
 	cargo install cargo-edit
+
+docker-engine:
+	sudo apt-get update
+	sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu  `lsb_release -cs` stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	sudo apt-get update
+	sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+docker-post-install:
+	-sudo groupadd docker
+	sudo usermod -aG docker $$USER
+	newgrp docker
+	#docker run hello-world
+
+minikube-install:
+	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+	sudo install minikube-linux-amd64 /home/$$USER/bin/minikube
+	minikube start
+	minikube kubectl -- get po -A
+	#minikube  dashboard
+	#https://minikube.sigs.k8s.io/docs/start/
+	minikube stop
+
+gcloud-install:
+	# ln -s /bin/python3 ~/bin
+	wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-359.0.0-linux-x86_64.tar.gz
+	tar xf google-cloud-sdk-*.tar.gz
+	./google-cloud-sdk/install.sh
+	# make sure google-cloud-sdk/bin comes before existing gcloud in /snap/bin or remove /snap/bin/gcloud
+	sudo mv /snap/bin/gcloud /snap/bin/gcloud-old
+	gcloud init
+	gcloud components list
+	gcloud components install kubectl
