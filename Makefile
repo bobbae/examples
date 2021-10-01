@@ -77,6 +77,12 @@ xtar:
 	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
 	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile .env
 
+gobox-sym-encrypt:
+	gobox sym-encrypt x.tar.gz x.tar.gz.gobox
+
+gobox-sym-decrypt:
+	gobox sym-decrypt x.tar.gz.gobox x.tar.gz
+
 gobox-encrypt: 
 	gobox encrypt ~/.ssh/gobox_public ~/.ssh/gobox_private x.tar.gz x.tar.gz.gobox
 
