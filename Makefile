@@ -75,7 +75,19 @@ gpg-decrypt:
 xtar:
 	[ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.old
 	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
-	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile 
+	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile .env
+
+gobox-encrypt: gobox
+	gobox encrypt ~/.ssh/gobox_public ~/.ssh/gobox_private x.tar.gz x.tar.gz.gobox
+
+gobox-decrypt: gobox
+	gobox decrypt ~/.ssh/gobox_public ~/.ssh/gobox_private  x.tar.gz.gobox x.tar.gz
+
+gobox-genkey:
+	gobox genkey ~/.ssh/gobox_public ~/.ssh/gobox_private
+
+gobox:
+	go get github.com/danderson/gobox
 
 xuntar:
 	cp examples/x.tar.gz.gpg
@@ -89,7 +101,7 @@ common-tools: common-base common-tools-build-essentials common-tools-1  common-t
 
 common-base:
 	sudo apt update
-	sudo apt install -y vim tmux openssl 
+	sudo apt install -y vim tmux openssl miller
 
 common-tools-fzf:
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
