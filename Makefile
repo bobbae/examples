@@ -93,7 +93,7 @@ gobox-genkey:
 	gobox genkey ~/.ssh/gobox_public ~/.ssh/gobox_private
 
 gobox:
-	go get github.com/danderson/gobox
+	go install github.com/danderson/gobox
 
 xuntar:
 	cp examples/x.tar.gz.gpg
