@@ -1,7 +1,0 @@
-baseURL = "https://bobbae.gitlab.io/mm"
-languageCode = "en-us"
-title = "m&m"
-theme = "ananke"
-
-[params]
-  featured_image = "/static/images/la.jpg"
