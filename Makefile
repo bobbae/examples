@@ -1,11 +1,17 @@
 #alias si := system-info
 
+#https://github.com/casey/just#installation
+
 #system-info:
 #	@echo from ~/justfile
 #	@echo "This is an {{arch()}} machine running {{os()}}".
 #	@echo PATH is {{env_var("PATH")}}
 #	@echo PATH is $PATH
 #	@echo current invocation directory is {{invocation_directory()}}
+
+.PHONY: all
+all:
+	@echo make all is all we do
 
 ssh-host-keys:
 	sudo ssh-keygen -b 1024 -t rsa -f /etc/ssh/ssh_host_key
