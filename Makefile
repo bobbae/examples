@@ -203,6 +203,7 @@ common-tools-fzf:
 .PHONY: common-tools-nodejs
 common-tools-nodejs:
 	sudo apt install -y nodejs npm
+	sudo npm install -g yarn
 
 .PHONY: common-tools-golang
 common-tools-golang:
