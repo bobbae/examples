@@ -4,6 +4,8 @@
 !.phpcs.xml.dist
 
 
+.DS_Store
+
 # node.js
 # ignore node/grunt dependency directories
 node_modules/
