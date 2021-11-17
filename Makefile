@@ -152,7 +152,10 @@ gpg-decrypt:
 xtar:
 	[ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.old
 	[ -f ~/.bash_profile ] && cp ~/.bash_profile ~/.bash_profile.old
-	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile .env
+	tar -C ~  -zcvf  x.tar.gz  .ssh .vim .vimrc .vimrc.old .tmux.conf .shextra .bashrc  .gitconfig  .bash_profile .env
+
+xtargo: xtar
+	gobox sym-encrypt x.tar.gz x.tar.gz.gobox
 
 .PHONY: gobox-sym-encrypt
 gobox-sym-encrypt:
